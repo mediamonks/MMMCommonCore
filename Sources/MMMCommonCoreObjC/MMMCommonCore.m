@@ -5,6 +5,16 @@
 
 #import "MMMCommonCore.h"
 
+#if !TARGET_OS_WATCH
+
+@import UIKit;
+
+BOOL MMMIsSystemVersionGreaterOrEqual(NSString *version) {
+	return [version compare:[[UIDevice currentDevice] systemVersion] options:NSNumericSearch] != NSOrderedDescending;
+}
+
+#endif
+
 NSString *MMMPathRelativeToAppBundle(NSString *path) {
 
 	static NSMutableDictionary<NSString *, NSString *> *pathToPrefix = nil;

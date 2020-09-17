@@ -7,10 +7,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#if !TARGET_OS_WATCH
+
 /** 
  * YES, if the current iOS version is greater or equal to the provided version string. 
  */
 extern BOOL MMMIsSystemVersionGreaterOrEqual(NSString *version);
+
+#endif
 
 /** 
  * This can be used for bodies of methods that are not designated initializers for a class, for example:
