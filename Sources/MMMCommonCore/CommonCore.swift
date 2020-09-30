@@ -67,7 +67,18 @@ public func withParent<Parent, ReturnType>(
 /// `NSLocalizedString()` without `comment` and with an optional dictionary of `${VAR}` substitutions
 /// (see `mmm_stringBySubstitutingVariables`).
 public func MMMLocalizedString(_ key: String, vars: [String: String]? = nil) -> String {
-	let result = NSLocalizedString(key, comment: "") // swiftlint:disable:this nslocalizedstring_key
+	let notFoundSentinel = "__MMMLocalizedStringValueNotFound__"
+	let result = NSLocalizedString(key, value: notFoundSentinel, comment: "") // swiftlint:disable:this nslocalizedstring_key
+	guard result != notFoundSentinel else {
+		#if DEBUG
+		return "[[\(key)]]"
+		#else
+		// Swift version of NSLocalizedString() would return and empty string by default.
+		// A key name would look bad in the release for sure but it might give more information to the end user
+		// and make reporting the untranslated key easier.
+		return key
+		#endif
+	}
 	if let vars = vars {
 		return result.mmm_stringBySubstitutingVariables(vars)
 	} else {
