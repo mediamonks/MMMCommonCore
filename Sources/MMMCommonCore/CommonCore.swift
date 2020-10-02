@@ -44,6 +44,29 @@ extension String {
 	}
 }
 
+extension Scanner {
+
+	/// Scans a single character unless at the end (or a null-terminator).
+	///
+	/// - Note: This is needed only before iOS 13, which has a corresponding shortcut.
+	public func mmm_scanNextCharacter() -> Character? {
+		let ch = self.__mmm_scanNextCharacter()
+		guard ch != 0 else { return nil }
+		if let scalar = UnicodeScalar(ch) {
+			return Character(scalar)
+		} else {
+			return nil
+		}
+	}
+
+	/// Scans the given strings if it follows next.
+	///
+	/// - Note: This is needed only before iOS 13, which has a corresponding shortcut.
+	public func mmm_scanString(_ s: String) -> Bool {
+		return self.scanString(s, into: nil)
+	}
+}
+
 // MARK: - This is for misc stuff that is hard to group initially now.
 
 /// Unwraps the given "parent" object and either executes the given closure with it or, if the parent is `nil`,

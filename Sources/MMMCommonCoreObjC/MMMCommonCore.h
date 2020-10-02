@@ -127,7 +127,7 @@ extern NSString *_MMMStringForEnumerationValue(NSString *enumTypeName, NSString 
 @interface NSScanner (MMMTemple)
 
 /** Grabs and returns the next character or 0 in case it's the scanner is at end. */
-- (unichar)mmm_scanNextCharacter;
+- (unichar)mmm_scanNextCharacter NS_REFINED_FOR_SWIFT;
 
 @end
 
