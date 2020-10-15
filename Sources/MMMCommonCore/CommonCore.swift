@@ -108,3 +108,32 @@ public func MMMLocalizedString(_ key: String, vars: [String: String]? = nil) -> 
 		return result
 	}
 }
+
+extension Sequence {
+
+	/// Elements of this sequence in the same order but with elements having the same identifer (as given by a closure)
+	/// occuring only once.
+	///
+	/// ```
+	/// let countries = [
+	/// 	("JP", "Japan", "Tokyo"), ("JP", "Japan", "Osaka"),
+	/// 	("IT", "Italy", "Milan"), ("IT", "Italy", "Rome")
+	/// ]
+	/// print(countries.unique { $0.0 })
+	/// // Prints [("JP", "Japan", "Tokyo"), ("IT", "Italy", "Milan")]
+	/// ```
+	///
+	/// - Parameter elementId: A closure providing identifier for every element of the sequence.
+	public func unique<Identifier: Hashable>(by elementId: (Element) -> Identifier) -> [Element] {
+		var seen: Set<Identifier> = []
+		var result: [Element] = []
+		for element in self {
+			let id = elementId(element)
+			if !seen.contains(id) {
+				result.append(element)
+				seen.insert(id)
+			}
+		}
+		return result
+	}
+}
