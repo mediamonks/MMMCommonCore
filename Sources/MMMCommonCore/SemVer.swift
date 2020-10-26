@@ -43,6 +43,9 @@ public struct SemVer: Codable {
 		let onlyDigits = CharacterSet.decimalDigits.inverted
 	
 		var parts = version
+			// We accept 1_2_4 as 1.2.4 as well, strange format, but seen occasionaly;
+			// and shouldn't bother proper semantic versions.
+			.replacingOccurrences(of: "_", with: ".")
 			.split(separator: ".")
 			.compactMap { Int($0.trimmingCharacters(in: onlyDigits)) }
 		
