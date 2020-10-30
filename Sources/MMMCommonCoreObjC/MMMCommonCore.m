@@ -211,7 +211,8 @@ NSString *MMMStringForLoggingFromData(NSData *data, NSInteger maxStringLength) {
 	NSMutableString *result = [[NSMutableString alloc] init];
 
 	NSError *e = self;
-	while (e) {
+	// Note that Swift errors returning `nil` for underlyingError might end up with NSNull there.
+	while (e && ![e isKindOfClass:[NSNull class]]) {
 
 		if ([result length] > 0)
 			[result appendString:@" > "];
