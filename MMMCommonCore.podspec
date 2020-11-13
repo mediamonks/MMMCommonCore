@@ -6,7 +6,7 @@
 Pod::Spec.new do |s|
 
 	s.name = "MMMCommonCore"
-	s.version = "1.1.6"
+	s.version = "1.1.7"
 	s.summary = "Small bits and pieces reused in many pods from MMMTemple"
 	s.description =  s.summary
 	s.homepage = "https://github.com/mediamonks/#{s.name}"
