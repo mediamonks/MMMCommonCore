@@ -7,7 +7,7 @@
 
 #if !TARGET_OS_WATCH
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 BOOL MMMIsSystemVersionGreaterOrEqual(NSString *version) {
 	return [version compare:[[UIDevice currentDevice] systemVersion] options:NSNumericSearch] != NSOrderedDescending;
