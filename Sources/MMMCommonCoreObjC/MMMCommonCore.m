@@ -5,7 +5,7 @@
 
 #import "MMMCommonCore.h"
 
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !SWIFT_PACKAGE
 
 #import <UIKit/UIKit.h>
 
