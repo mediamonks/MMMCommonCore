@@ -6,23 +6,18 @@
 import Foundation
 
 extension Array {
-	
-	/// Something that return you the previous and next element in an array.
+	/// Iterates through all neighbour pairs of elements (a[i], a[i + 1]) in a regular order.
 	public func mmm_forEachPair(block: @escaping (Element, Element) -> Void) {
-	
-		if self.count == 0 {
-			return
-		}
-		
-		for index in 0..<self.count - 1 {
+		for index in stride(from: 0, to: self.count - 1, by: 1) {
 			block(self[index], self[index + 1])	
 		}
 	}
 }
 
-extension Error {
+// MARK: -
 
-	/// Better string representation of `NSError`s.
+extension Error {
+	/// Better string representation for `Error` and `NSError`s.
 	///
 	/// This is a Swift version of `mmm_description` that allows to avoid casting to `NSError`
 	/// and which falls back `String(describing:)` for "not really" `NSError`s to avoid meaningless
@@ -36,8 +31,35 @@ extension Error {
 	}
 }
 
-extension String {
+extension Optional where Wrapped == Error {
+	/// To describe errors wrapped into optionals as well.
+	public var mmm_description: String {
+		switch self {
+		case .none:
+			return "<no error>"
+		case .some(let error):
+			return error.mmm_description
+		}
+	}
+}
 
+// MARK: -
+
+extension NSError {
+	/// Initialize using the name of the given type as a domain string.
+	public convenience init<T>(domain: T, message: String, code: Int = -1, underlyingError: NSError? = nil) {
+		var userInfo = [String: Any]()
+		userInfo[NSLocalizedDescriptionKey] = message
+		if let underlyingError = underlyingError {
+			userInfo[NSUnderlyingErrorKey] = underlyingError
+		}
+		self.init(domain: String(reflecting: type(of: domain)), code: code, userInfo: userInfo)
+	}
+}
+
+// MARK: -
+
+extension String {
 	// Swift (String) version for replacing ${variable_name} with value from providing dictionary.
 	public func mmm_stringBySubstitutingVariables(_ variables: [String: String]) -> String {
 		return NSString(string: self).mmm_string(bySubstitutingVariables: variables)
@@ -73,9 +95,9 @@ extension Scanner {
 /// triggers `preconditionFailure()` with a corresponding message.
 ///
 /// This is handy for objects that keep a weak reference to their "parent" object and depend on it for certain
-/// operations. Normally these objects should not be used when their parent is deallocated, but it could be handy to
-/// flag such misuse. Using a guard with a corresponding preconditionFailure() is fine, but can be repetitive especially
-/// if a nicer message is wanted.
+/// operations. Normally these objects should not be used when their parent is deallocated, but it could be handy
+/// to flag such misuse. Using a guard with a corresponding preconditionFailure() is fine, but can be repetitive
+/// especially if a nicer message is wanted.
 public func withParent<Parent, ReturnType>(
 	_ parent: Parent?,
 	function: StaticString = #function, file: StaticString = #file, line: UInt = #line,
@@ -93,13 +115,14 @@ public func MMMLocalizedString(_ key: String, vars: [String: String]? = nil) -> 
 	let notFoundSentinel = "__MMMLocalizedStringValueNotFound__"
 	let result = NSLocalizedString(key, value: notFoundSentinel, comment: "") // swiftlint:disable:this nslocalizedstring_key
 	guard result != notFoundSentinel else {
-		#if DEBUG
-		return "[[\(key)]]"
+		#if !DEBUG
+			// The Swift version of NSLocalizedString() would return and empty string by default.
+			// The key's name would look bad in the release for sure but it might give more information
+			// to the end user and can make reporting the untranslated keys easier.
+			return key
 		#else
-		// Swift version of NSLocalizedString() would return and empty string by default.
-		// A key name would look bad in the release for sure but it might give more information to the end user
-		// and make reporting the untranslated key easier.
-		return key
+			// And let's make sure to give more attention to untranslated strings in Debug builds.
+			return "[[\(key)]]"
 		#endif
 	}
 	if let vars = vars {
@@ -111,8 +134,8 @@ public func MMMLocalizedString(_ key: String, vars: [String: String]? = nil) -> 
 
 extension Sequence {
 
-	/// Elements of this sequence in the same order but with elements having the same identifer (as given by a closure)
-	/// occuring only once.
+	/// Elements of this sequence in the same order but with elements having the same identifer
+	/// (as given by a closure) occuring only once.
 	///
 	/// ```
 	/// let countries = [
