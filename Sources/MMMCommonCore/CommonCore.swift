@@ -45,15 +45,31 @@ extension Optional where Wrapped == Error {
 
 // MARK: -
 
+/// The name of the value's type suitable for logs or NSError domains: without the name of the module
+/// and/or private contexts.
+public func MMMTypeName(_ value: Any) -> String {
+	// To avoid "Something.Type" when the type is passed as value.
+	let name = type(of: value) is AnyClass
+		? String(reflecting: type(of: value))
+		: String(reflecting: value)
+	return name
+		.split(separator: ".")
+		// Skip "(unknown context at $...)" added for private types.
+		.filter { !($0.hasPrefix("(") && $0.hasSuffix(")")) }
+		// Ignore module names as it's the main module most of the time.
+		.dropFirst()
+		.joined(separator: ".")
+}
+
 extension NSError {
-	/// Initialize using the name of the given type as a domain string.
-	public convenience init<T>(domain: T, message: String, code: Int = -1, underlyingError: NSError? = nil) {
+	/// Initialize using the given value's type name as a domain string.
+	public convenience init(domain: Any, message: String, code: Int = -1, underlyingError: Error? = nil) {
 		var userInfo = [String: Any]()
 		userInfo[NSLocalizedDescriptionKey] = message
-		if let underlyingError = underlyingError {
+		if let underlyingError = underlyingError as NSError? {
 			userInfo[NSUnderlyingErrorKey] = underlyingError
 		}
-		self.init(domain: String(reflecting: type(of: domain)), code: code, userInfo: userInfo)
+		self.init(domain: MMMTypeName(domain), code: code, userInfo: userInfo)
 	}
 }
 
