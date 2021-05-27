@@ -45,6 +45,29 @@ extension Optional where Wrapped == Error {
 
 // MARK: -
 
+/// Adding this to your Swift errors makes them better fit the ObjC world avoiding the dreaded
+/// "The operation couldn’t be completed (<type> error 1.)" when tracing.
+///
+/// (The names with underscores are recognized by the standard Swift library and are needed for the magic.)
+public protocol NSErrorFriendly: Error {
+	var _userInfo: AnyObject? { get }
+	var _code: Int { get }
+}
+
+extension NSErrorFriendly {
+
+	public var _userInfo: AnyObject? {
+		NSDictionary(dictionary: [ NSLocalizedDescriptionKey: String(describing: self) ])
+	}
+
+	// Swift uses code 1 for all cases, which just like the fixed description looks confusing on its own and when
+	// traced with `mmm_description`, as it's making you think that it has picked a code based on case index.
+	public var _code: Int { -1 }
+}
+
+
+// MARK: -
+
 /// The name of the value's type suitable for logs or NSError domains: without the name of the module
 /// and/or private contexts.
 public func MMMTypeName(_ value: Any) -> String {
