@@ -69,7 +69,8 @@ extension NSError {
 		if let underlyingError = underlyingError as NSError? {
 			userInfo[NSUnderlyingErrorKey] = underlyingError
 		}
-		self.init(domain: MMMTypeName(domain), code: code, userInfo: userInfo)
+		let domain = (domain as? String) ?? MMMTypeName(domain)
+		self.init(domain: domain, code: code, userInfo: userInfo)
 	}
 }
 
