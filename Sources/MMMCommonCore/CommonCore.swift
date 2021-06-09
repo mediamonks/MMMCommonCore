@@ -43,6 +43,18 @@ extension Optional where Wrapped == Error {
 	}
 }
 
+extension Optional {
+	
+	/// Unwrap an optional value, or throw the provided error when `nil`
+	/// - Returns: `Wrapped` value.
+	public func unwrapped<E: Error>(orThrowing error: @autoclosure () -> E) throws -> Wrapped {
+		guard let value = self else {
+			throw error()
+		}
+		return value
+	}
+}
+
 // MARK: -
 
 /// Adding this to your Swift errors makes them better fit the ObjC world avoiding the dreaded
