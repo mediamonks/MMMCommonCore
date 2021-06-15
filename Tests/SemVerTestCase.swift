@@ -1,7 +1,6 @@
 //
-// Weber Galaxy App.
-// Copyright (C) 2019-2020 Weber-Stephen Products LLC. All rights reserved.
-// Developed for Weber by MediaMonks B.V.
+// MMMCommonCore. Part of MMMTemple.
+// Copyright (C) 2016-2020 MediaMonks. All rights reserved.
 //
 
 import XCTest
