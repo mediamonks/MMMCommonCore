@@ -6,5 +6,24 @@
 import XCTest
 @testable import MMMCommonCore
 
-class MMMCommonTestCase: XCTestCase {
+public final class MMMCommonTestCase: XCTestCase {
+
+	private enum Err: Error {
+		case `default`
+	}
+
+	public func testOptionalHelpers() {
+		
+		let empty: String? = nil
+		
+		XCTAssertThrowsError(try empty.unwrapped(orThrowing: Err.default))
+		XCTAssertEqual(empty.unwrap(withFallback: "foo"), "foo")
+		
+		let notEmpty: String? = "Val"
+
+		XCTAssertNoThrow(try notEmpty.unwrapped(orThrowing: Err.default))
+		XCTAssertEqual(try notEmpty.unwrapped(orThrowing: Err.default), "Val")
+		
+		XCTAssertEqual(notEmpty.unwrap(withFallback: "foo"), "Val")
+	}
 }

@@ -53,6 +53,15 @@ extension Optional {
 		}
 		return value
 	}
+	
+	/// Unwrap an optional value, or return the provided fallback value.
+	/// - Returns: `Wrapped` value if not nil, or `fallback`.
+	public func unwrap(withFallback fallback: @autoclosure () -> Wrapped) -> Wrapped {
+		guard let value = self else {
+			return fallback()
+		}
+		return value
+	}
 }
 
 // MARK: -
