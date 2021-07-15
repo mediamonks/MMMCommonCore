@@ -47,7 +47,14 @@ extension Optional {
 	
 	/// Unwrap an optional value, or throw the provided error when `nil`
 	/// - Returns: `Wrapped` value.
+	@available(*, deprecated, renamed: "unwrap(orThrow:)")
 	public func unwrapped<E: Error>(orThrowing error: @autoclosure () -> E) throws -> Wrapped {
+		try unwrap(orThrow: error())
+	}
+	
+	/// Unwrap an optional value, or throw the provided error when `nil`
+	/// - Returns: `Wrapped` value.
+	public func unwrap<E: Error>(orThrow error: @autoclosure () -> E) throws -> Wrapped {
 		guard let value = self else {
 			throw error()
 		}

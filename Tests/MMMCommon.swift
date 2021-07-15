@@ -16,13 +16,13 @@ public final class MMMCommonTestCase: XCTestCase {
 		
 		let empty: String? = nil
 		
-		XCTAssertThrowsError(try empty.unwrapped(orThrowing: Err.default))
+		XCTAssertThrowsError(try empty.unwrap(orThrow: Err.default))
 		XCTAssertEqual(empty.unwrap(withFallback: "foo"), "foo")
 		
 		let notEmpty: String? = "Val"
 
-		XCTAssertNoThrow(try notEmpty.unwrapped(orThrowing: Err.default))
-		XCTAssertEqual(try notEmpty.unwrapped(orThrowing: Err.default), "Val")
+		XCTAssertNoThrow(try notEmpty.unwrap(orThrow: Err.default))
+		XCTAssertEqual(try notEmpty.unwrap(orThrow: Err.default), "Val")
 		
 		XCTAssertEqual(notEmpty.unwrap(withFallback: "foo"), "Val")
 	}
