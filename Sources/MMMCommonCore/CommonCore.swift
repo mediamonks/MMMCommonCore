@@ -9,8 +9,23 @@ extension Array {
 	/// Iterates through all neighbour pairs of elements (a[i], a[i + 1]) in a regular order.
 	public func mmm_forEachPair(block: @escaping (Element, Element) -> Void) {
 		for index in stride(from: 0, to: self.count - 1, by: 1) {
-			block(self[index], self[index + 1])	
+			block(self[index], self[index + 1])
 		}
+	}
+	
+	/// Find the first element that can map to a certain type, it's like doing a `.compactMap {}.first` without the
+	/// overhead of mapping all values first.
+	/// - Parameter predicate: The predicate to match and map the value.
+	/// - Throws: Only rethrows.
+	/// - Returns: The first value that the predicate matched.
+	public func firstMap<T>(where predicate: (Element) throws -> T?) rethrows -> T? {
+		for element in self {
+			if let value = try predicate(element) {
+				return value
+			}
+		}
+		
+		return nil
 	}
 }
 
