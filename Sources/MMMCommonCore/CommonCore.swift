@@ -67,6 +67,14 @@ extension Optional {
 		try unwrap(orThrow: error())
 	}
 	
+	/// Execute the callback when the optional is non-nil.
+	/// - Parameter execute: The callback to be executed.
+	public func unwrapped(_ execute: (Wrapped) throws -> Void) rethrows {
+		if let value = self {
+			try execute(value)
+		}
+	}
+	
 	/// Unwrap an optional value, or throw the provided error when `nil`
 	/// - Returns: `Wrapped` value.
 	public func unwrap<E: Error>(orThrow error: @autoclosure () -> E) throws -> Wrapped {
@@ -79,10 +87,7 @@ extension Optional {
 	/// Unwrap an optional value, or return the provided fallback value.
 	/// - Returns: `Wrapped` value if not nil, or `fallback`.
 	public func unwrap(withFallback fallback: @autoclosure () -> Wrapped) -> Wrapped {
-		guard let value = self else {
-			return fallback()
-		}
-		return value
+		return self ?? fallback()
 	}
 }
 
