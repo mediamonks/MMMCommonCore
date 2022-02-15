@@ -6,9 +6,9 @@
 import XCTest
 @testable import MMMCommonCore
 
-class SemVerTests: XCTestCase {
+internal final class SemVerTests: XCTestCase {
 	
-	func testBasics() {
+	public func testBasics() {
 		
 		let baseline = "1.2.3"
 		let sem = SemVer(version: baseline)
@@ -19,7 +19,7 @@ class SemVerTests: XCTestCase {
 		XCTAssertEqual(3, sem.patch)
 	}
 	
-	func testEquateable() {
+	public func testEquateable() {
 		
 		let baseline = "1.2.3"
 		let sem = SemVer(version: baseline)
@@ -28,7 +28,7 @@ class SemVerTests: XCTestCase {
 		XCTAssertEqual(sem, sem2)
 	}
 	
-	func testCompareable() {
+	public func testCompareable() {
 		
 		let major1 = SemVer(version: "3.2.0")
 		let major2 = SemVer(version: "1.3.6")
@@ -53,7 +53,7 @@ class SemVerTests: XCTestCase {
 		XCTAssertNotEqual(patch1, patch2)
 	}
 	
-	func testParser() {
+	public func testParser() {
 	
 		XCTAssertEqual(SemVer(version: "0.1.200").version, "0.1.200")
 		XCTAssertEqual(SemVer(version: "2000000.1.200").version, "2000000.1.200")
@@ -61,5 +61,4 @@ class SemVerTests: XCTestCase {
 		XCTAssertEqual(SemVer(version: "0.100-dev.200").version, "0.100.200")
 		XCTAssertEqual(SemVer(version: "1.2.3.4.5").version, "1.2.3")
 	}
-	
 }
