@@ -69,10 +69,13 @@ extension Optional {
 	
 	/// Execute the callback when the optional is non-nil.
 	/// - Parameter execute: The callback to be executed.
-	public func unwrapped(_ execute: (Wrapped) throws -> Void) rethrows {
+	/// - Returns: Self for chaining
+	@discardableResult
+	public func unwrapped(_ execute: (Wrapped) throws -> Void) rethrows -> Optional<Wrapped> {
 		if let value = self {
 			try execute(value)
 		}
+		return self
 	}
 	
 	/// Unwrap an optional value, or throw the provided error when `nil`
@@ -84,7 +87,8 @@ extension Optional {
 		return value
 	}
 	
-	/// Unwrap an optional value, or return the provided fallback value.
+	/// Unwrap an optional value, or return the provided fallback value. Basically the same as using a the `??` operator
+	/// with a non-optional value, that might look strange, or get lost in a long chain.
 	/// - Returns: `Wrapped` value if not nil, or `fallback`.
 	public func unwrap(withFallback fallback: @autoclosure () -> Wrapped) -> Wrapped {
 		return self ?? fallback()
