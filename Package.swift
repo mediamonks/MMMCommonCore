@@ -5,7 +5,9 @@ let package = Package(
     name: "MMMCommonCore",
     platforms: [
         .iOS(.v11),
-        .watchOS(.v5)
+        .watchOS(.v5),
+        .macOS(.v10_10),
+        .tvOS(.v9)
     ],
     products: [
         .library(
