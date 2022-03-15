@@ -6,7 +6,7 @@
 Pod::Spec.new do |s|
 
 	s.name = "MMMCommonCore"
-	s.version = "1.8.0"
+	s.version = "1.8.1"
 	s.summary = "Small bits and pieces reused in many pods from MMMTemple"
 	s.description =  s.summary
 	s.homepage = "https://github.com/mediamonks/#{s.name}"
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 	s.ios.deployment_target = '11.0'
 	s.watchos.deployment_target = '2.0'
 	s.tvos.deployment_target = '9.0'
-	s.macos.deployment_target = '10.10'
+	s.osx.deployment_target = '10.10'
 
 	s.subspec 'ObjC' do |ss|
 		ss.source_files = [ "Sources/#{s.name}ObjC/*.{h,m}" ]
