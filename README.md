@@ -11,7 +11,7 @@ Small bits and pieces reused in many pods from MMMTemple.
 
 Podfile:
 
-```
+```ruby
 source 'https://github.com/mediamonks/MMMSpecs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 ...
@@ -19,6 +19,12 @@ pod 'MMMCommonCore'
 ```
 
 (Use 'MMMCommonCore/ObjC' when Swift wrappers are not needed.)
+
+SPM:
+
+```swift
+.package(url: "https://github.com/mediamonks/MMMCommonCore", .upToNextMajor(from: "1.8.1"))
+```
 
 ## Usage
 
