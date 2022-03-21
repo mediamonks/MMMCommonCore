@@ -5,9 +5,9 @@
 
 #import "MMMCommonCore.h"
 
-#if !TARGET_OS_WATCH && !SWIFT_PACKAGE
+#if !TARGET_OS_OSX && !TARGET_OS_WATCH && !SWIFT_PACKAGE
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 BOOL MMMIsSystemVersionGreaterOrEqual(NSString *version) {
 	return [version compare:[[UIDevice currentDevice] systemVersion] options:NSNumericSearch] != NSOrderedDescending;
