@@ -25,7 +25,7 @@ extern BOOL MMMIsSystemVersionGreaterOrEqual(NSString *version);
  * }
  * \endcode
  *
- * Will throw internal inconsitency exception with a nice message (via NSAssert) and return nil.
+ * Will throw internal inconsistency exception with a nice message (via NSAssert) and return nil.
  *
  * Note that this is not needed anymore as much when the compiler can enforce designated initializers.
  */
@@ -114,7 +114,7 @@ extern NSString *_MMMStringForEnumerationValue(NSString *enumTypeName, NSString 
 /**
  * A dictionary built from the receiver by adding values from another dictionary.
  * The other dictionary can be nil.
- * This is to make it more convenient to add stuff to literal dictionaries, such as Auto Layot metrics dictionaries
+ * This is to make it more convenient to add stuff to literal dictionaries, such as Auto Layout metrics dictionaries
  * or CoreText attribute dictionaries. 
  */
 - (NSDictionary *)mmm_extendedWithDictionary:(NSDictionary *)d;
@@ -152,7 +152,7 @@ extern NSString *_MMMStringForEnumerationValue(NSString *enumTypeName, NSString 
 @end
 
 /**
- * Roughly a curl-equivanlent string for the given request. 
+ * Roughly a curl-equivalent string for the given request.
  * It's handy to dump all the outgoing requests this way.
  */
 extern NSString *MMMCurlStringFromRequest(NSURLRequest *request);

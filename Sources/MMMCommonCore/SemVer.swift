@@ -35,14 +35,14 @@ public struct SemVer: Codable {
 		self.patch = patch
 	}
 	
-	/// Initialize by parsing a string version. This strips any non-numerical characters; `0.9-dev.5` becomes `0.9.5`.
+	/// Initialise by parsing a string version. This strips any non-numerical characters; `0.9-dev.5` becomes `0.9.5`.
 	/// - Parameter version: The version in string format
 	public init(version: String) {
 	
 		let onlyDigits = CharacterSet.decimalDigits.inverted
 	
 		var parts = version
-			// We accept 1_2_4 as 1.2.4 as well, strange format, but seen occasionaly;
+			// We accept 1_2_4 as 1.2.4 as well, strange format, but seen occasionally;
 			// and shouldn't bother proper semantic versions.
 			.replacingOccurrences(of: "_", with: ".")
 			.split(separator: ".")

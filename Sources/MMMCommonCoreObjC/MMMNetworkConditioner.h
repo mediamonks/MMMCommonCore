@@ -27,7 +27,7 @@ typedef void (^MMMNetworkConditionerBlock)(NSError * _Nullable error);
  * If simulation of errors and delays is turned on for this app, then the block will be called on the main queue
  * after a random delay and possibly with an error object (with its error message/code/domain being the same in all
  * cases).
- * In case the simulation is turned off, then the block is called immediatelly with error being nil.
+ * In case the simulation is turned off, then the block is called immediately with error being nil.
  *
  * Usage example from MMMPublicLoadableImage:
  * \code

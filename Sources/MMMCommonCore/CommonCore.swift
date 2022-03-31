@@ -6,7 +6,7 @@
 import Foundation
 
 extension Array {
-	/// Iterates through all neighbour pairs of elements (a[i], a[i + 1]) in a regular order.
+	/// Iterates through all neighbouring pairs of elements (a[i], a[i + 1]) in a regular order.
 	public func mmm_forEachPair(block: @escaping (Element, Element) -> Void) {
 		for index in stride(from: 0, to: self.count - 1, by: 1) {
 			block(self[index], self[index + 1])
@@ -152,7 +152,17 @@ extension NSError {
 // MARK: -
 
 extension String {
-	// Swift (String) version for replacing ${variable_name} with value from providing dictionary.
+	
+    /// Swift (`String`) version for replacing `${variable_name}` with a value from a providing dictionary.
+    ///
+    /// **Example**
+    /// ```
+    /// let str = "String with ${VARIABLES} in it, supports ${MULTIPLE} variables."
+    /// str.mmm_stringBySubstitutingVariables([
+    ///     "VARIABLES": "Foo",
+    ///     "MULTIPLE": "Bar"
+    /// ]) // String with Foo in it, supports Bar variables.
+    /// ```
 	public func mmm_stringBySubstitutingVariables(_ variables: [String: String]) -> String {
 		return NSString(string: self).mmm_string(bySubstitutingVariables: variables)
 	}
@@ -226,8 +236,8 @@ public func MMMLocalizedString(_ key: String, vars: [String: String]? = nil) -> 
 
 extension Sequence {
 
-	/// Elements of this sequence in the same order but with elements having the same identifer
-	/// (as given by a closure) occuring only once.
+	/// Elements of this sequence in the same order but with elements having the same identifier
+	/// (as given by a closure) occurring only once.
 	///
 	/// ```
 	/// let countries = [
