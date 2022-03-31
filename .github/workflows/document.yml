@@ -1,4 +1,4 @@
-name: AutoRelease
+name: Document
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
 
       - name: Install Jazzy
         run: gem install jazzy
-      
+
       - name: Build Swift docs
         run: |
           sourcekitten doc --spm --module-name MMMCommonCore > swiftDoc.json
@@ -45,6 +45,10 @@ jobs:
           sourcekitten doc --objc $(pwd)/Sources/MMMCommonCoreObjC/include/MMMCommonCoreObjC.h \
             -- -x objective-c  -isysroot $(xcrun --show-sdk-path --sdk iphonesimulator) \
             -I $(pwd) -fmodules > objcDoc.json
+
+      - name: Get Jazzy
+        run: |
+          jazzy --sourcekitten-sourcefile objcDoc.json,swiftDoc.json
 
       - name: Publish
         uses: JamesIves/github-pages-deploy-action@v4.2.5
