@@ -6,7 +6,7 @@
 Pod::Spec.new do |s|
 
 	s.name = "MMMCommonCore"
-	s.version = "1.8.3"
+	s.version = "1.8.4"
 	s.summary = "Small bits and pieces reused in many pods from MMMTemple"
 	s.description =  s.summary
 	s.homepage = "https://github.com/mediamonks/#{s.name}"
@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
 
 	s.subspec 'ObjC' do |ss|
 		ss.source_files = [ "Sources/#{s.name}ObjC/*.{h,m}" ]
+		ss.exclude_files = [ "Sources/#{s.name}ObjC/include/#{s.name}ObjC.h" ]
 	end
 
 	s.swift_versions = '5.4'
@@ -28,6 +29,7 @@ Pod::Spec.new do |s|
 	s.pod_target_xcconfig = {
 		"DEFINES_MODULE" => "YES"
 	}
+
 	s.subspec 'Swift' do |ss|
 		ss.source_files = [ "Sources/#{s.name}/*.swift" ]
     ss.dependency "#{s.name}/ObjC"

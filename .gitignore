@@ -7,3 +7,8 @@
 /*.xcodeproj
 xcuserdata/
 /.swiftpm
+
+# Jazzy
+docs/
+objcDoc.json
+swiftDoc.json
