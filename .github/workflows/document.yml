@@ -33,37 +33,27 @@ jobs:
 
       - name: Install Sourcekitten
         if: steps.wait-for-test.outputs.conclusion == 'success'
-        id: install-sourcekitten
         run: brew install sourcekitten
 
       - name: Install Jazzy
-        if: steps.install-sourcekitten.outputs.conclusion == 'success'
-        id: install-jazzy
         run: gem install jazzy
 
       - name: Build Swift docs
-        if: steps.install-jazzy.outputs.conclusion == 'success'
-        id: build-swift-docs
         run: |
           sourcekitten doc --spm --module-name ${{ github.event.repository.name }} > swiftDoc.json
 
       - name: Build ObjC docs
-        if: steps.build-swift-docs.outputs.conclusion == 'success'
-        id: build-objc-docs
         run: |
           sourcekitten doc --objc $(pwd)/Sources/${{ github.event.repository.name }}ObjC/include/${{ github.event.repository.name }}ObjC.h \
             -- -x objective-c  -isysroot $(xcrun --show-sdk-path --sdk iphonesimulator) \
             -I $(pwd) -fmodules > objcDoc.json
 
       - name: Get Jazzy
-        if: steps.build-objc-docs.outputs.conclusion == 'success'
-        id: build-docs
         run: |
           jazzy --sourcekitten-sourcefile objcDoc.json,swiftDoc.json
 
       - name: Publish
         uses: JamesIves/github-pages-deploy-action@v4.2.5
-        if: steps.build-docs.outputs.conclusion == 'success'
         with:
           branch: gh-pages
           folder: docs
