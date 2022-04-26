@@ -1,392 +1,140 @@
 {
   "warnings": [
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 60,
-      "symbol": "ArrayBuilder.buildBlock()",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 64,
-      "symbol": "ArrayBuilder.buildBlock(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 68,
-      "symbol": "ArrayBuilder.buildBlock(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 72,
-      "symbol": "ArrayBuilder.buildBlock(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 76,
-      "symbol": "ArrayBuilder.buildBlock(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 80,
-      "symbol": "ArrayBuilder.buildArray(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 86,
-      "symbol": "ArrayBuilder.buildOptional(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 90,
-      "symbol": "ArrayBuilder.buildEither(first:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 94,
-      "symbol": "ArrayBuilder.buildEither(second:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 100,
-      "symbol": "ArrayBuilder.buildBlock(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 107,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 115,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 124,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 136,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 145,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 154,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 163,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 173,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 183,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 193,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 204,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 215,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/ArrayBuilder.swift",
-      "line": 226,
-      "symbol": "ArrayBuilder.buildBlock(_:_:_:_:_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/CommonCore.swift",
-      "line": 105,
-      "symbol": "NSErrorFriendly._userInfo",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/CommonCore.swift",
-      "line": 106,
-      "symbol": "NSErrorFriendly._code",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/CommonCore.swift",
-      "line": 111,
-      "symbol": "NSErrorFriendly._userInfo",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/CommonCore.swift",
-      "line": 117,
-      "symbol": "NSErrorFriendly._code",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/MMMNetworkConditioner.swift",
-      "line": 9,
-      "symbol": "MMMNetworkConditioner.conditionBlock(context:estimatedResponseLength:block:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/MMMTimeSource.swift",
-      "line": 23,
-      "symbol": "MMMMockTimeSource.init(scale:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/MMMTimeSource.swift",
-      "line": 44,
-      "symbol": "MMMDefaultTimeSource.init()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/SemVer.swift",
-      "line": 20,
-      "symbol": "SemVer.zero",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/SemVer.swift",
-      "line": 22,
-      "symbol": "SemVer.major",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/SemVer.swift",
-      "line": 23,
-      "symbol": "SemVer.minor",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/SemVer.swift",
-      "line": 24,
-      "symbol": "SemVer.patch",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/SemVer.swift",
-      "line": 32,
-      "symbol": "SemVer.init(major:minor:patch:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCore/SemVer.swift",
-      "line": 56,
-      "symbol": "SemVer.version",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 91,
       "symbol": "_MMMStringForEnumerationValue",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.function",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 127,
       "symbol": "NSScanner(MMMTemple)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 137,
       "symbol": "NSMutableCharacterSet(MMMTemple)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 147,
       "symbol": "NSObject(MMMTemple)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 172,
       "symbol": "NSError(MMMTemple)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 216,
       "symbol": "NSString(MMMTemple)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 233,
       "symbol": "NSDate(MMMTemple)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 246,
       "symbol": "NSArray(MMMTemple)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 274,
       "symbol": "NSMutableArray(MMMTemple)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMCommonCore.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMCommonCore.h",
       "line": 285,
       "symbol": "NSData(MMMTemple)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMNetworkConditioner.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMNetworkConditioner.h",
       "line": 12,
       "symbol": "MMMNetworkConditionerBlock",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMNetworkConditioner.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMNetworkConditioner.h",
       "line": 19,
       "symbol": "MMMNetworkConditioner.+shared",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMNetworkConditioner.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMNetworkConditioner.h",
       "line": 24,
       "symbol": "MMMNetworkConditioner.-init",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMNetworkConditioner.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMNetworkConditioner.h",
       "line": 61,
       "symbol": "MMMNetworkCondition.-delayForEstimatedResponseLength:context:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMNetworkConditioner.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMNetworkConditioner.h",
       "line": 62,
       "symbol": "MMMNetworkCondition.-shouldFailInContext:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMNetworkConditioner.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMNetworkConditioner.h",
       "line": 71,
       "symbol": "MMMSimpleNetworkCondition.-initWithMinDelay:maxDelay:failureRate:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMNetworkConditioner.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMNetworkConditioner.h",
       "line": 75,
       "symbol": "MMMSimpleNetworkCondition.-init",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMWeakProxy.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMWeakProxy.h",
       "line": 16,
       "symbol": "MMMWeakProxy.+proxyWithTarget:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMWeakProxy.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMWeakProxy.h",
       "line": 18,
       "symbol": "MMMWeakProxy.-initWithTarget:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/include/../MMMWeakProxy.h",
+      "file": "/Users/runner/work/MMMCommonCore/MMMCommonCore/Sources/MMMCommonCoreObjC/MMMWeakProxy.h",
       "line": 20,
       "symbol": "MMMWeakProxy.-init",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
