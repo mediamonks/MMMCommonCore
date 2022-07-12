@@ -124,7 +124,13 @@
             <a class="nav-group-name-link" href="Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/MMMBestMatchingLanguage(in:preferredLanguage:mode:)">MMMBestMatchingLanguage(in:preferredLanguage:mode:)</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Functions.html#/c:@F@MMMCurlStringFromRequest">MMMCurlStringFromRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/MMMElementMatchingPreferredLanguage(in:preferredLanguage:languageOfElement:mode:)">MMMElementMatchingPreferredLanguage(in:preferredLanguage:languageOfElement:mode:)</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Functions.html#/c:@F@MMMIsSystemVersionGreaterOrEqual">MMMIsSystemVersionGreaterOrEqual</a>
@@ -155,6 +161,14 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Functions.html#/withParent(_:function:file:line:block:)">withParent(_:function:file:line:block:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/LanguageMatchingMode.html">LanguageMatchingMode</a>
               </li>
             </ul>
           </li>
@@ -564,6 +578,49 @@ especially if a nicer message is wanted.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Function/MMMElementMatchingPreferredLanguage(in:preferredLanguage:languageOfElement:mode:)" class="dashAnchor"></a>
+                    <a class="token" href="#/">MMMElementMatchingPreferredLanguage(in:<wbr>preferredLanguage:<wbr>languageOfElement:<wbr>mode:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Picks an element of a sequence that is matching the given preferred language identifier the best.</p>
+
+<p>This is to offload an often used piece of logic where we need to find a suitable translation.
+(This should be an extension on Sequence as it&rsquo;s irrelevant to most sequences.)</p>
+
+<p>Language identifiers can have any case and both <code>-</code> and <code>_</code> are supported as separators
+(although the latter is incorrect when we are talking about language identifiers on iOS).</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Function/MMMBestMatchingLanguage(in:preferredLanguage:mode:)" class="dashAnchor"></a>
+                    <a class="token" href="#/">MMMBestMatchingLanguage(in:<wbr>preferredLanguage:<wbr>mode:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -572,7 +629,7 @@ especially if a nicer message is wanted.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2022 <a class="link" href="https://media.monks.com" target="_blank" rel="external noopener">Media.Monks</a>. All rights reserved. (Last updated: 2022-04-28)</p>
+      <p>&copy; 2022 <a class="link" href="https://media.monks.com" target="_blank" rel="external noopener">Media.Monks</a>. All rights reserved. (Last updated: 2022-07-12)</p>
       <p></p>
     </section>
   </body>

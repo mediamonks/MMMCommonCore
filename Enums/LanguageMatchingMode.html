@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ArrayBuilder Structure Reference</title>
+    <title>LanguageMatchingMode Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/ArrayBuilder" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Enum/LanguageMatchingMode" class="dashAnchor"></a>
 
-    <a title="ArrayBuilder Structure Reference"></a>
+    <a title="LanguageMatchingMode Enumeration Reference"></a>
 
     <header class="header">
       <a href="https://media.monks.com">
@@ -37,7 +37,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">MMMCommonCore</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      ArrayBuilder Structure Reference
+      LanguageMatchingMode Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -218,55 +218,8 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>ArrayBuilder</h1>
-            <p>A resultBuilder to help with constructing arrays. This can be useful when you want to create an array, in order, that
-depends on a number of conditions.</p>
-
-<p><strong>Example</strong></p>
-<pre class="highlight swift"><code><span class="c1">// For example populating an array of widgets (inside your ViewModel).</span>
-<span class="k">self</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">build</span> <span class="p">{</span>
-    <span class="kt">ProfileWidget</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="k">let</span> <span class="nv">avatar</span> <span class="o">=</span> <span class="nf">userAvatar</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kt">AvatarWidget</span><span class="p">(</span><span class="nv">avatar</span><span class="p">:</span> <span class="n">avatar</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">switch</span> <span class="n">user</span><span class="o">.</span><span class="n">type</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="o">.</span><span class="nv">admin</span><span class="p">:</span>
-        <span class="kt">AdminPanel</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="p">)</span>
-        <span class="kt">DeveloperPanel</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="p">)</span>
-
-    <span class="k">case</span> <span class="o">.</span><span class="nv">developer</span><span class="p">:</span>
-        <span class="kt">DeveloperPanel</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-
-<p>Now <code>widgets.didSet</code> only get&rsquo;s called once, allowing you to trigger changes once.</p>
-
-<p><strong>Old example</strong></p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">widgets</span><span class="p">:</span> <span class="p">[</span><span class="kt">AnyWidget</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="kt">ProfileWidget</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
-<span class="p">]</span>
-
-<span class="k">if</span> <span class="k">let</span> <span class="nv">avatar</span> <span class="o">=</span> <span class="nf">userAvatar</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">widgets</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">AvatarWidget</span><span class="p">(</span><span class="nv">avatar</span><span class="p">:</span> <span class="n">avatar</span><span class="p">))</span>
-<span class="p">}</span>
-
-<span class="k">switch</span> <span class="n">user</span><span class="o">.</span><span class="n">type</span> <span class="p">{</span>
-<span class="k">case</span> <span class="o">.</span><span class="nv">admin</span><span class="p">:</span>
-    <span class="n">widgets</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span> <span class="p">[</span>
-        <span class="kt">AdminPanel</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="p">)</span>
-        <span class="kt">DeveloperPanel</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="p">)</span>
-    <span class="p">])</span>
-
-<span class="k">case</span> <span class="o">.</span><span class="nv">developer</span><span class="p">:</span>
-    <span class="n">widgets</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">DeveloperPanel</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="p">))</span>
-<span class="p">}</span>
-
-<span class="k">self</span><span class="o">.</span><span class="n">widgets</span> <span class="o">=</span> <span class="n">widgets</span>
-</code></pre>
-
+            <h1>LanguageMatchingMode</h1>
+            
           </div>
         </section>
 
@@ -278,8 +231,8 @@ depends on a number of conditions.</p>
                   <div>
                     <code>
                     <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildBlock()" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildBlock()</a>
+                    <a name="//apple_ref/swift/Element/exact" class="dashAnchor"></a>
+                    <a class="token" href="#/">exact</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -287,7 +240,8 @@ depends on a number of conditions.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Only return an element where both the &ldquo;language&rdquo; and the &ldquo;region&rdquo; parts of the identifier match.</p>
+
                       </div>
                     </section>
                   </div>
@@ -296,8 +250,8 @@ depends on a number of conditions.</p>
                   <div>
                     <code>
                     <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildBlock(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildBlock(_:<wbr>)</a>
+                    <a name="//apple_ref/swift/Element/allowPartiallyMatching" class="dashAnchor"></a>
+                    <a class="token" href="#/">allowPartiallyMatching</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -305,169 +259,10 @@ depends on a number of conditions.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildArray(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildArray(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildOptional(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildOptional(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildEither(first:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildEither(first:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildEither(second:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildEither(second:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildBlock(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildBlock(_:<wbr>_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildBlock(_:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildBlock(_:<wbr>_:<wbr>_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildBlock(_:_:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildBlock(_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildBlock(_:_:_:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildBlock(_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/buildBlock(_:_:_:_:_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">buildBlock(_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
+                        <p>If no exact match is available, then return an element where at least the &ldquo;language&rdquo; part matches,
+giving preference to identifiers without the &ldquo;region&rdquo; part (e.g. &lsquo;de&rsquo; is going to match earlier
+than &lsquo;de-AT&rsquo;).</p>
+
                       </div>
                     </section>
                   </div>
