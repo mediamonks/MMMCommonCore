@@ -234,6 +234,80 @@ public func MMMLocalizedString(_ key: String, vars: [String: String]? = nil) -> 
 	}
 }
 
+/// Picks an element of a sequence that is matching the given preferred language identifier the best.
+///
+/// This is to offload an often used piece of logic where we need to find a suitable translation.
+/// (This should be an extension on Sequence as it's irrelevant to most sequences.)
+///
+/// Language identifiers can have any case and both `-` and `_` are supported as separators
+/// (although the latter is incorrect when we are talking about language identifiers on iOS).
+///
+/// - Parameters:
+///   - languageOfElement: Returns the language corresponding to an element of the sequence.
+///   - mode: Tells if partial matches are acceptable in case no exact match can be found.
+public func MMMElementMatchingPreferredLanguage<T: Sequence>(
+	in sequence: T,
+	preferredLanguage: String,
+	languageOfElement: (T.Element) -> String,
+	mode: LanguageMatchingMode
+) -> T.Element? {
+
+	let preferred = SplitLanguageIdentifier(preferredLanguage)
+	let available = sequence.map { (id: SplitLanguageIdentifier(languageOfElement($0)), element: $0) }
+	
+	// Let's look for the exact match first.
+	var bestMatching = available.first { $0.id == preferred }
+	
+	if bestMatching == nil && mode == .allowPartiallyMatching {
+		// A partial match favoring identifiers without region first (e.g. to make 'de' match earlier than 'de-AT'
+		// for a preferred language 'de' or 'de-something', where something is not 'AT').
+		bestMatching = available.first { $0.id.region.isEmpty && $0.id.lang == preferred.lang }
+			?? available.first { $0.id.lang == preferred.lang }
+	}
+	
+	return bestMatching.map { $0.element }
+}
+
+public func MMMBestMatchingLanguage(in languages: [String], preferredLanguage: String, mode: LanguageMatchingMode) -> String? {
+	MMMElementMatchingPreferredLanguage(
+		in: languages,
+		preferredLanguage: preferredLanguage,
+		languageOfElement: { $0 },
+		mode: mode
+	)
+}
+
+public enum LanguageMatchingMode {
+	/// Only return an element where both the "language" and the "region" parts of the identifier match.
+	case exact
+	/// If no exact match is available, then return an element where at least the "language" part matches,
+	/// giving preference to identifiers without the "region" part (e.g. 'de' is going to match earlier
+	/// than 'de-AT').
+	case allowPartiallyMatching
+}
+
+/// A little helper for parsing/comparing language IDs.
+private struct SplitLanguageIdentifier: Equatable {
+
+	/// The original identifier, "as is".
+	public let identifier: String
+
+	public let lang: String
+	public let region: String
+
+	public init(_ identifier: String) {
+		self.identifier = identifier
+		// Note that this is able to split both language and locale identifiers correctly.
+		let components = Locale.components(fromIdentifier: identifier)
+		self.lang = components[NSLocale.Key.languageCode.rawValue]?.lowercased() ?? ""
+		self.region = components[NSLocale.Key.countryCode.rawValue]?.lowercased() ?? ""
+	}
+
+	public static func == (left: SplitLanguageIdentifier, right: SplitLanguageIdentifier) -> Bool {
+		left.lang == right.lang && left.region == right.region
+	}
+}
+
 extension Sequence {
 
 	/// Elements of this sequence in the same order but with elements having the same identifier

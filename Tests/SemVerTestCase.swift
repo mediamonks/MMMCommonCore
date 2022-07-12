@@ -19,7 +19,7 @@ internal final class SemVerTests: XCTestCase {
 		XCTAssertEqual(3, sem.patch)
 	}
 	
-	public func testEquateable() {
+	public func testEquatable() {
 		
 		let baseline = "1.2.3"
 		let sem = SemVer(version: baseline)
@@ -28,7 +28,7 @@ internal final class SemVerTests: XCTestCase {
 		XCTAssertEqual(sem, sem2)
 	}
 	
-	public func testCompareable() {
+	public func testComparable() {
 		
 		let major1 = SemVer(version: "3.2.0")
 		let major2 = SemVer(version: "1.3.6")
