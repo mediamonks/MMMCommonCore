@@ -207,26 +207,32 @@ NSString *MMMStringForLoggingFromData(NSData *data, NSInteger maxStringLength) {
 @implementation NSError (MMMTemple)
 
 - (NSString *)mmm_description {
-
 	NSMutableString *result = [[NSMutableString alloc] init];
-
 	NSError *e = self;
 	// Note that Swift errors returning `nil` for underlyingError might end up with NSNull there.
 	while (e && ![e isKindOfClass:[NSNull class]]) {
-
 		if ([result length] > 0)
 			[result appendString:@" > "];
-
-		// Treating the -1 error code as "other" kind of error, where only the message matters for diagnostics.
-		if (e.code != -1)
-			[result appendString:[NSString stringWithFormat:@"%@ (%@#%ld)", e.localizedDescription, e.domain, (long)e.code]];
-		else
-			[result appendString:[NSString stringWithFormat:@"%@ (%@)", e.localizedDescription, e.domain]];
-
+		[result appendString:[e mmm_nonRecursiveDescription]];
 		e = e.userInfo[NSUnderlyingErrorKey];
 	}
-
 	return result;
+}
+
+- (NSString *)mmm_nonRecursiveDescription {
+	if (self.class == NSClassFromString(@"__SwiftNativeNSError")) {
+		// Treating underlying Swift errors as NSError is normally useless and it's better to fall back to their descriptions instead.
+		// (I could check for `self.class != NSError.class` here to make it less dependent on the actual system class name,
+		// but that would include rare subclasses like `NSURLError`; I could also check for "Swift" in the class name, but that still
+		// would not guarantee to cover future changes in the standard library anyway.)
+		return [self description];
+	} else {
+		// Treating the -1 error code as "other" kind of error, where only the message matters for diagnostics.
+		if (self.code != -1)
+			return [NSString stringWithFormat:@"%@ (%@#%ld)", self.localizedDescription, self.domain, (long)self.code];
+		else
+			return [NSString stringWithFormat:@"%@ (%@)", self.localizedDescription, self.domain];
+	}
 }
 
 - (NSError *)mmm_underlyingError {
