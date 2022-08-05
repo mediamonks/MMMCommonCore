@@ -1,6 +1,6 @@
 //
 // MMMCommonCore. Part of MMMTemple.
-// Copyright (C) 2016-2020 MediaMonks. All rights reserved.
+// Copyright (C) 2016-2022 MediaMonks. All rights reserved.
 //
 
 import Foundation
@@ -277,7 +277,20 @@ public func MMMBestMatchingLanguage(in languages: [String], preferredLanguage: S
 	)
 }
 
-public enum LanguageMatchingMode {
+/// Objective-C bridge for MMMBestMatchingLanguage, since top-level functions are not supported.
+/// Look at ``MMMBestMatchingLanguage(in:preferredLanguage:mode:)`` for more info.
+@objc public final class MMMBestMatching: NSObject {
+
+	@objc public class func language(
+		in languages: [String],
+		preferredLanguage: String,
+		mode: LanguageMatchingMode
+	) -> String? {
+		return MMMBestMatchingLanguage(in: languages, preferredLanguage: preferredLanguage, mode: mode)
+	}
+}
+
+@objc public enum LanguageMatchingMode: Int {
 	/// Only return an element where both the "language" and the "region" parts of the identifier match.
 	case exact
 	/// If no exact match is available, then return an element where at least the "language" part matches,
