@@ -78,6 +78,23 @@ extension Optional {
 		return self
 	}
 	
+	/// Execute the callback when the optional is non-nil, and throw an ``assertionFailure`` when it's nil.
+	/// - Parameter execute: The callback to be executed.
+	/// - Returns: Self for chaining
+	@discardableResult
+	public func unwrapOrAssert(
+		_ execute: (Wrapped) throws -> Void,
+		file: StaticString = #file,
+		line: UInt = #line
+	) rethrows -> Optional<Wrapped> {
+		if let value = self {
+			try execute(value)
+		} else {
+			assertionFailure(file: file, line: line)
+		}
+		return self
+	}
+	
 	/// Unwrap an optional value, or throw the provided error when `nil`
 	/// - Returns: `Wrapped` value.
 	public func unwrap<E: Error>(orThrow error: @autoclosure () -> E) throws -> Wrapped {
