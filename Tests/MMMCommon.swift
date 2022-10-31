@@ -41,5 +41,18 @@ public final class MMMCommonTestCase: XCTestCase {
 		// A language without region is considered "more general", though other language could be closer to the preferred.
 		XCTAssertEqual(MMMBestMatchingLanguage(in: languages, preferredLanguage: "de_IT", mode: .allowPartiallyMatching), "de")
 		XCTAssertEqual(MMMBestMatchingLanguage(in: languages, preferredLanguage: "fr", mode: .allowPartiallyMatching), "fr_FR")
+
+		XCTAssertEqual(
+			MMMBestMatchingLanguage(in: languages, preferredLanguages: ["en", "de-DE"], mode: .allowPartiallyMatching),
+			"de"
+		)
+		XCTAssertEqual(
+			MMMBestMatchingLanguage(in: languages, preferredLanguages: ["en", "de-DE"], mode: .exact),
+			nil
+		)
+		XCTAssertEqual(
+			MMMBestMatchingLanguage(in: languages, preferredLanguages: ["en", "it"], mode: .allowPartiallyMatching),
+			nil
+		)
 	}
 }
