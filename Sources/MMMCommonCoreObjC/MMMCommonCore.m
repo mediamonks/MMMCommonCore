@@ -4,6 +4,7 @@
 //
 
 #import "MMMCommonCore.h"
+#import <objc/runtime.h>
 
 #if !TARGET_OS_OSX && !TARGET_OS_WATCH && !SWIFT_PACKAGE
 
@@ -538,4 +539,24 @@ NSString *MMMQueryStringFromParameters(NSDictionary *parameters) {
 BOOL MMMSeemsLikeEmail(NSString *email) {
 	NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"^(.+)@(.+)\\.(.+)$" options:0 error:nil];
 	return [re rangeOfFirstMatchInString:email options:0 range:NSMakeRange(0, email.length)].location == 0;
+}
+
+NSArray<Class> *MMMAllClassesConformingNSObject() {
+
+	unsigned int count = 0;
+	Class *allClasses = objc_copyClassList(&count);
+	if (!allClasses)
+		return @[];
+	
+	NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:count];
+	for (Class *ptr = allClasses; *ptr; ptr++) {
+		Class class = *ptr;
+		if (class_conformsToProtocol(class, @protocol(NSObject))) {
+			[result addObject:class];
+		}
+	}
+	
+	free(allClasses);
+	
+	return result;
 }

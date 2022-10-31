@@ -301,4 +301,8 @@ extern NSString *MMMQueryStringFromParametersEscape(NSString *s);
  */
 extern BOOL MMMSeemsLikeEmail(NSString *email);
 
+/** A Swift-friendly wrapper for `objc_copyClassList()` pre-filtering `NSObject`-conforming classes to avoid tripping
+  * in `swift_dynamicCast` while working with `AnyClass`. */
+extern NSArray<Class> *MMMAllClassesConformingNSObject();
+
 NS_ASSUME_NONNULL_END
