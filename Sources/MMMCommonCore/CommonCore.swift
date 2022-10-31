@@ -285,10 +285,40 @@ public func MMMElementMatchingPreferredLanguage<T: Sequence>(
 	return bestMatching.map { $0.element }
 }
 
+/// A version of `MMMElementMatchingPreferredLanguage(in:preferredLanguage:languageOfElement:mode:)`
+/// for multiple languages.
+public func MMMElementMatchingPreferredLanguages<T: Sequence>(
+	in sequence: T,
+	preferredLanguages: [String],
+	languageOfElement: (T.Element) -> String,
+	mode: LanguageMatchingMode
+) -> T.Element? {
+	for preferredLanguage in preferredLanguages { // `.lazy.compactMap` would have an issue with a non-escaping closure.
+		if let result = MMMElementMatchingPreferredLanguage(
+			in: sequence,
+			preferredLanguage: preferredLanguage,
+			languageOfElement: languageOfElement,
+			mode: mode
+		) {
+			return result
+		}
+	}
+	return nil
+}
+
 public func MMMBestMatchingLanguage(in languages: [String], preferredLanguage: String, mode: LanguageMatchingMode) -> String? {
 	MMMElementMatchingPreferredLanguage(
 		in: languages,
 		preferredLanguage: preferredLanguage,
+		languageOfElement: { $0 },
+		mode: mode
+	)
+}
+
+public func MMMBestMatchingLanguage(in languages: [String], preferredLanguages: [String], mode: LanguageMatchingMode) -> String? {
+	MMMElementMatchingPreferredLanguages(
+		in: languages,
+		preferredLanguages: preferredLanguages,
 		languageOfElement: { $0 },
 		mode: mode
 	)
