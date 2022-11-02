@@ -6,8 +6,10 @@
 import Foundation
 
 extension Array {
-	/// Iterates through all neighbouring pairs of elements (a[i], a[i + 1]) in a regular order.
-	public func mmm_forEachPair(block: @escaping (Element, Element) -> Void) {
+
+	/// Iterates through all neighboring pairs of elements (a[i], a[i + 1]) in a regular order.
+	@available(*, deprecated, message: "Use `forEach` or `map` on `pairs()` instead")
+	public func mmm_forEachPair(block: (Element, Element) -> Void) {
 		for index in stride(from: 0, to: self.count - 1, by: 1) {
 			block(self[index], self[index + 1])
 		}
@@ -26,6 +28,37 @@ extension Array {
 		}
 		
 		return nil
+	}
+}
+
+extension Sequence {
+	/// A sequence of overlapping pairs of elements of the receiver in their original order,
+	/// e.g. `["a", "b", "c"]` -> `[("a", "b"), ("b", "c")]`.`
+	public func pairs() -> AnySequence<(Element, Element)> {
+		.init { PairsIterator(iterator: self.makeIterator()) }
+	}
+}
+
+private struct PairsIterator<Iterator: IteratorProtocol>: IteratorProtocol {
+
+	private var iterator: Iterator
+	private var previous: Iterator.Element?
+
+	public init(iterator: Iterator) {
+		self.iterator = iterator
+	}
+		
+	public mutating func next() -> (Iterator.Element, Iterator.Element)? {
+		guard
+			let previous = previous ?? iterator.next(),
+			let next = iterator.next()
+		else {
+			return nil
+		}
+		defer {
+			self.previous = next
+		}
+		return (previous, next)
 	}
 }
 

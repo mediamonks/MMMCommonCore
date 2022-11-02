@@ -182,13 +182,6 @@ All extensions are summarized per type, click on the typename to view it's exten
 <details><summary><strong>Array</strong></summary>
 <p>
 
-#### `Array.mmm_forEachPair`
-
-```swift
-/// Iterates through all neighbouring pairs of elements (a[i], a[i + 1]) in a regular order.
-func mmm_forEachPair(block: @escaping (Element, Element) -> Void)
-```
-
 #### `Array.firstMap`
 
 ```swift

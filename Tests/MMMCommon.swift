@@ -27,6 +27,18 @@ public final class MMMCommonTestCase: XCTestCase {
 		XCTAssertEqual(notEmpty.unwrap(withFallback: "foo"), "Val")
 	}
 	
+	public func testPairs() {
+	
+	 	func m(a: Int, b: Int) -> String { "\(a)\(b)" }
+	 	
+		XCTAssertEqual([1, 2, 3].pairs().map(m), ["12", "23"])
+		XCTAssertEqual([1, 2].pairs().map(m), ["12"])
+		XCTAssertEqual([1].pairs().map(m), [])
+		XCTAssertEqual([].pairs().map(m), [])
+
+		XCTAssertEqual((1...).pairs().prefix(5).map(m), ["12", "23", "34", "45", "56"])
+	}
+	
 	public func testMMMElementMatchingPreferredLanguage() {
 	
 		let languages = ["de-AT", "de", "de_CH", "fr_FR"]
