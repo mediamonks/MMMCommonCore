@@ -173,17 +173,23 @@ extension NSErrorFriendly {
 /// The name of the value's type suitable for logs or NSError domains: without the name of the module
 /// and/or private contexts.
 public func MMMTypeName(_ value: Any) -> String {
+
 	// To avoid "Something.Type" when the type is passed as value.
 	let name = type(of: value) is AnyClass
 		? String(reflecting: type(of: value))
 		: String(reflecting: value)
-	return name
-		.split(separator: ".")
-		// Skip "(unknown context at $...)" added for private types.
-		.filter { !($0.hasPrefix("(") && $0.hasSuffix(")")) }
-		// Ignore module names as it's the main module most of the time.
-		.dropFirst()
-		.joined(separator: ".")
+
+	var components = name.split(separator: ".")
+
+	// Skip "(unknown context at $...)" added for private types.
+	components = components.filter { !($0.hasPrefix("(") && $0.hasSuffix(")")) }
+
+	// Ignore module names, if any, as it's the main module most of the time.
+	if components.count > 1 {
+		components.removeFirst()
+	}
+
+	return components.joined(separator: ".")
 }
 
 extension NSError {
@@ -357,16 +363,16 @@ public func MMMBestMatchingLanguage(in languages: [String], preferredLanguages: 
 	)
 }
 
-/// Objective-C bridge for MMMBestMatchingLanguage, since top-level functions are not supported.
-/// Look at ``MMMBestMatchingLanguage(in:preferredLanguage:mode:)`` for more info.
+@available(*, deprecated, message: "Use the corresponding function in `MMMCommonCoreHelpers`")
 @objc public final class MMMBestMatching: NSObject {
 
+	/// See ``MMMBestMatchingLanguage(in:preferredLanguage:mode:)`` for more info.
 	@objc public class func language(
 		in languages: [String],
 		preferredLanguage: String,
 		mode: LanguageMatchingMode
 	) -> String? {
-		return MMMBestMatchingLanguage(in: languages, preferredLanguage: preferredLanguage, mode: mode)
+		MMMBestMatchingLanguage(in: languages, preferredLanguage: preferredLanguage, mode: mode)
 	}
 }
 
@@ -429,3 +435,24 @@ extension Sequence {
 		return result
 	}
 }
+
+// MARK: -
+
+/// This is to expose some of the functions back to ObjC.
+@objc public class MMMCommonCoreHelpers: NSObject {
+
+	/// Obj-C alias for ``MMMTypeName``.
+	@objc public static func typeName(_ value: Any) -> String {
+		MMMTypeName(value)
+	}
+
+	/// Obj-C alias for ``MMMBestMatchingLanguage(in:preferredLanguage:mode:)``.
+	@objc public class func language(
+		in languages: [String],
+		preferredLanguage: String,
+		mode: LanguageMatchingMode
+	) -> String? {
+		MMMBestMatchingLanguage(in: languages, preferredLanguage: preferredLanguage, mode: mode)
+	}
+}
+
