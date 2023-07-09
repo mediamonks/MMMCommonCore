@@ -61,10 +61,6 @@ public struct ArrayBuilder<T> {
 		return []
 	}
 
-	public static func buildBlock(_ component: T) -> [T] {
-		return [component]
-	}
-
 	public static func buildBlock(_ components: T...) -> [T] {
 		return components
 	}
