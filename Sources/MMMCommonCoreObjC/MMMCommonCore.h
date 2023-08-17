@@ -305,4 +305,10 @@ extern BOOL MMMSeemsLikeEmail(NSString *email);
   * in `swift_dynamicCast` while working with `AnyClass`. */
 extern NSArray<Class> *MMMAllClassesConformingNSObject();
 
+/// Adding this protocol to Swift-only subclasses of Obj-C classes makes them visible in the list of all Obj-C classes
+/// produced by ``MMMAllClassesConformingNSObject()``. Swift can be too smart finding subclasses that are never used
+/// from Obj-C and thus not registering them with the runtime.
+@protocol MMMRuntimeDiscoverable <NSObject>
+@end
+
 NS_ASSUME_NONNULL_END
