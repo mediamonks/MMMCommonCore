@@ -155,8 +155,11 @@ NSString *MMMCurlStringFromRequest(NSURLRequest *request) {
 
 	NSString *dataBinary = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
 
+	// `--location-trusted` allows to keep "Authorization" header while being redirected (the behavior of NSURLSession).
+	// `-i` is to include response headers into output; adding it last so it's easy to disable headers when one wants
+	// to pipe the response out.
 	return [NSString
-		stringWithFormat:@"curl -i -X %@ '%@' %@ --data-binary '%@'",
+		stringWithFormat:@"curl -X %@ '%@' %@ --data-binary '%@' --location-trusted -i",
 			request.HTTPMethod,
 			request.URL,
 			headers,
