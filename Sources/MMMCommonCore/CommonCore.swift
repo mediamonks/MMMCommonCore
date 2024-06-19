@@ -65,17 +65,14 @@ private struct PairsIterator<Iterator: IteratorProtocol>: IteratorProtocol {
 // MARK: -
 
 extension Error {
+
 	/// Better string representation for `Error` and `NSError`s.
 	///
 	/// This is a Swift version of `mmm_description` that allows to avoid casting to `NSError`
 	/// and which falls back `String(describing:)` for "not really" `NSError`s to avoid meaningless
 	/// "The operation couldn't be completed" messages.
 	public var mmm_description: String {
-		if type(of: self) is NSError.Type {
-			return (self as NSError).mmm_description()
-		} else {
-			return String(describing: self)
-		}
+		(self as NSError).mmm_description()
 	}
 }
 
@@ -193,12 +190,13 @@ public func MMMTypeName(_ value: Any) -> String {
 }
 
 extension NSError {
+
 	/// Initialize using the given value's type name as a domain string.
 	public convenience init(domain: Any, message: String, code: Int = -1, underlyingError: Error? = nil) {
 		var userInfo = [String: Any]()
 		userInfo[NSLocalizedDescriptionKey] = message
-		if let underlyingError = underlyingError as NSError? {
-			userInfo[NSUnderlyingErrorKey] = underlyingError
+		if let underlyingError {
+			userInfo[NSUnderlyingErrorKey] = underlyingError as NSError
 		}
 		let domain = (domain as? String) ?? MMMTypeName(domain)
 		self.init(domain: domain, code: code, userInfo: userInfo)

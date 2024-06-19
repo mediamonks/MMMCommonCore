@@ -224,11 +224,13 @@ NSString *MMMStringForLoggingFromData(NSData *data, NSInteger maxStringLength) {
 }
 
 - (NSString *)mmm_nonRecursiveDescription {
-	if (self.class == NSClassFromString(@"__SwiftNativeNSError")) {
+	if (self.class == NSClassFromString(@"__SwiftNativeNSError") && self.code != -1) {
 		// Treating underlying Swift errors as NSError is normally useless and it's better to fall back to their descriptions instead.
 		// (I could check for `self.class != NSError.class` here to make it less dependent on the actual system class name,
 		// but that would include rare subclasses like `NSURLError`; I could also check for "Swift" in the class name, but that still
 		// would not guarantee to cover future changes in the standard library anyway.)
+		// Update: now we have to check for code not being -1 as `NSError` are now translated into Swift ones when
+		// crossing concurrency domains.
 		return [self description];
 	} else {
 		// Treating the -1 error code as "other" kind of error, where only the message matters for diagnostics.
