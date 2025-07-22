@@ -303,7 +303,7 @@ extern BOOL MMMSeemsLikeEmail(NSString *email);
 
 /** A Swift-friendly wrapper for `objc_copyClassList()` pre-filtering `NSObject`-conforming classes to avoid tripping
   * in `swift_dynamicCast` while working with `AnyClass`. */
-extern NSArray<Class> *MMMAllClassesConformingNSObject();
+extern NSArray<Class> *MMMAllClassesConformingNSObject(void);
 
 /// Adding this protocol to Swift-only subclasses of Obj-C classes makes them visible in the list of all Obj-C classes
 /// produced by ``MMMAllClassesConformingNSObject()``. Swift can be too smart finding subclasses that are never used
