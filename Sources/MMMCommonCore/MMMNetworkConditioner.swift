@@ -6,7 +6,7 @@
 import Foundation
 
 extension MMMNetworkConditioner {
-	open func conditionBlock(
+	public func conditionBlock(
 		context: String = "",
 		estimatedResponseLength: Int = 0,
 		block: @escaping MMMNetworkConditionerBlock

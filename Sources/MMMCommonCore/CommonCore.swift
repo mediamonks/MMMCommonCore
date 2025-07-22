@@ -240,6 +240,7 @@ extension Scanner {
 	/// Scans the given strings if it follows next.
 	///
 	/// - Note: This is needed only before iOS 13, which has a corresponding shortcut.
+	@available(*, deprecated)
 	public func mmm_scanString(_ s: String) -> Bool {
 		return self.scanString(s, into: nil)
 	}

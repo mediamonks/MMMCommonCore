@@ -546,7 +546,7 @@ BOOL MMMSeemsLikeEmail(NSString *email) {
 	return [re rangeOfFirstMatchInString:email options:0 range:NSMakeRange(0, email.length)].location == 0;
 }
 
-NSArray<Class> *MMMAllClassesConformingNSObject() {
+NSArray<Class> *MMMAllClassesConformingNSObject(void) {
 
 	unsigned int count = 0;
 	Class *allClasses = objc_copyClassList(&count);
