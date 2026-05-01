@@ -1,12 +1,12 @@
 #
 # MMMCommonCore. Part of MMMTemple.
-# Copyright (C) 2015-2025 Monks. All rights reserved.
+# Copyright (C) 2015-2026 Monks. All rights reserved.
 #
 
 Pod::Spec.new do |s|
 
 	s.name = "MMMCommonCore"
-	s.version = "1.16.4"
+	s.version = "1.17.0"
 	s.summary = "Small bits and pieces reused in many pods from MMMTemple"
 	s.description = s.summary
 	s.homepage = "https://github.com/mediamonks/#{s.name}"
